@@ -114,7 +114,7 @@ if(isset($varMsj))
                    <!-- <div class="form-group">
                     <label>Mes</label>
                     <input type="text" class="form-control" id="mes" name="mes"  maxlength="15" placeholder="Ingrese el mes actual" title="Ingrese el mes actual" required>
-                  </div> -->
+                  </div> prueba-->
 
                   <label>Mes</label>
                   <select class="form-control" id="mes" name="mes" required>
