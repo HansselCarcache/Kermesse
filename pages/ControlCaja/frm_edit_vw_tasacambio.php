@@ -219,6 +219,7 @@ $edit = $dtTsc->getTasaCambiodet($varIdTscdet);
                         <a href="../../pages/ControlCaja/frm_edit_vw_tasacambio.php?editT=<?php echo $r->__GET('id_tasaCambio')?>&editTD=<?php echo $r->__GET('id_tasaCambio_det'); ?>#redirect">
                             <i class="far fa-edit" title="Editar Detalle"></i>
                           </a>
+                          &nbsp;&nbsp;
                          
                           <a href="#" onclick="deleteTasacambio(<?php echo $r->__GET('id_tasaCambio_det'); ?>,<?php echo $r->__GET('id_tasaCambio'); ?>);">
                             <i class="far fa-trash-alt" title="Eliminar Detalle"></i>

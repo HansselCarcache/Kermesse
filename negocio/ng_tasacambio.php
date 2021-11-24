@@ -117,9 +117,9 @@ if ($_GET)
     try
     {
         $tsc->__SET('id_tasaCambio', $_GET['deleteT']);
-        $tscdet->__SET('id_tasaCambio_det', $_GET['deleteTD']);
-        $dtvwTsc->eliminarTasaCambio($tsc, $tscdet);
-        header("Location: /Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php?msj=5");
+        $dtvwTsc->eliminarTasaCambiofull($tsc->__GET('id_tasaCambio'));
+        $dtvwTsc->eliminarTasaCambio($tsc);
+        header("Location: /Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php?msj=7");
     }
     catch(Exception $e)
     {

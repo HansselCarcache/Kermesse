@@ -307,4 +307,20 @@ class Dt_vw_TasaCambio extends Conexion
         } 
     }
 
+    public function eliminarTasaCambiofull($id)
+    {
+        try
+        {
+            $this->myCon = parent::conectar();
+            $sql2 = "DELETE FROM dbkermesse.tasacambio_det WHERE id_tasaCambio = ?";
+            $stm = $this->myCon->prepare($sql2);
+            $stm->execute(array($id));
+            $this->myCon = parent::desconectar();
+          
+        }catch(Exception $e)
+        {
+            die($e->getMessage());
+        } 
+    }
+
 }

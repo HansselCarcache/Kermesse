@@ -104,7 +104,7 @@ if(isset($varMsj))
                             <i class="far fa-eye" title="Visualizar Opciones"></i>
                           </a> 
                           &nbsp;&nbsp;
-                          <a href="#" onclick="deleteTasacambio(<?php echo $r->__GET('id_tasaCambio'); ?>, <?php echo $r->__GET('id_tasaCambio_det'); ?>);">
+                          <a href="#" onclick="deleteTasacambio(<?php echo $r->__GET('id_tasaCambio'); ?>);">
                             <i class="far fa-trash-alt" title="Eliminar Opciones"></i>
                           </a>
                           
@@ -180,14 +180,14 @@ if(isset($varMsj))
 <!-- Page specific script -->
 <script>
 
-function deleteTasacambio(idTsc, idTscdet){
+function deleteTasacambio(idTsc){
 $.jAlert({
         'type': 'confirm',
-        'confirmQuestion': '¿Esta seguro que desea eliminar el registro?',
+        'confirmQuestion': '¿Esta seguro que desea eliminar el encabezado? Si elimina el encabezado se eliminaran todos los detalles junto con el.',
         'onConfirm': function(e, btn){
           e.preventDefault();
           //do something here
-          window.location.href = "../../negocio/ng_tasacambio.php?deleteT="+idTsc+"&deleteTD="+idTscdet;
+          window.location.href = "../../negocio/ng_tasacambio.php?deleteT="+idTsc;
           btn.parents('.jAlert').closeAlert();
           return false;
         },

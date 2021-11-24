@@ -30,6 +30,8 @@ if(isset($varMsj))
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Jalert -->
+    <link rel="stylesheet" href="../../plugins/jAlert/dist/jAlert.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <!-- DataTables -->
@@ -152,7 +154,7 @@ if(isset($varMsj))
                   </div>
                   <div>
                   <input type="hidden"  name="detalle" id="detalle">
-                  <button type="button" class="btn btn-primary" onclick="agregarFila()">Registrar nuevo</button>
+                  <button type="button" class="btn btn-primary" onclick="validar()">Registrar nuevo</button>
                   <!-- <button type="button" class="btn btn-primary" onclick="test()">Ver</button>  -->
                 </div>
                 <br>
@@ -237,6 +239,9 @@ if(isset($varMsj))
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- JAlert js -->
+<script src="../../plugins/jAlert/dist/jAlert.min.js"></script>
+<script src="../../plugins/jAlert/dist/jAlert-functions.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
@@ -250,7 +255,19 @@ $(function () {
 });
 </script>
 
-
+<script>
+function validar(){
+  var campo1 = $('#tipoCambio').val();
+  var campo2 = $('#fecha').val();
+  if(campo1 === ''|| campo2 === ''){
+ errorAlert("La fecha y el tipo de cambio no pueden estar vacios");
+return false;
+}else{
+ //Las validaciones que necesitas hacer
+ agregarFila();
+}
+}  
+</script>
 
 <script>
             function agregarFila(){

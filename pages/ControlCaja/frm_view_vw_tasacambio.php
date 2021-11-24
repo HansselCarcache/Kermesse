@@ -6,6 +6,7 @@ include '../../entidades/ControlCaja/vw_tasaCambio.php';
 include '../../datos/dt_vw_tasacambio.php';
 include '../../entidades/ControlCaja/moneda.php';
 include '../../datos/dt_moneda.php';
+include '../../entidades/ControlCaja/tasacambiodet.php';
 
 $dtTsc = new Dt_vw_TasaCambio;
 $dtMn = new Dt_Moneda;
@@ -18,6 +19,7 @@ if(isset($varIdTsc))
 }
 
 $Tasa = $dtTsc->getTasaCambio($varIdTsc);
+$select = $dtTsc->listTasaCambiodet($varIdTsc);
 ?>
 
 
@@ -111,16 +113,43 @@ $Tasa = $dtTsc->getTasaCambio($varIdTsc);
                   </div>
 
                   <h2>Detalle Tasa Cambio</h2>
-                  <div class="form-group">
-                    <label>Fecha</label>
-                    <input type="date" class="form-control" id="fecha" name="fecha" readonly required>
-                    
-                  </div>
-                  <div class="form-group">
-                    <label>Tipo de Cambio</label>
-                    <input type="text" class="form-control" id="tipoCambio" name="tipoCambio" placeholder="Ingrese el tipo de cambio" title="Ingrese el tipo de cambio" readonly required>
-                    
-                  </div>
+                  
+                  <table id="tabla" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                        <th>ID Tasa Cambio</th>
+                        <th>Id Tasa Cambio detalle</th>
+                        <th>Fecha</th>
+                        <th>Tipo de Cambio</th>
+                        
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                  foreach($select as $r):
+                    ?>
+                    <tr>
+                        <td><?php echo $r->__GET('id_tasaCambio');?></td>
+                        <td><?php echo $r->__GET('id_tasaCambio_det');?></td>
+                        <td><?php echo $r->__GET('fecha');?></td>
+                        <td><?php echo $r->__GET('tipoCambio');?></td>
+                        
+                    </tr>
+                    <?php
+                        endforeach;
+                    ?>
+                     
+
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                    <th>Id Tasa Cambio detalle</th>
+                        <th>Fecha</th>
+                        <th>Tipo de Cambio</th>
+                        <th>Acciones</th>
+                    </tr>
+                  </tfoot>
+                </table>
                   
                 </div>
                 
