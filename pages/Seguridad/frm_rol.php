@@ -30,6 +30,7 @@ if (empty($_SESSION['acceso'])) {
 $usuario = $_SESSION['acceso']; // OBTENEMOS EL VALOR DE LA SESION
 //OBTENEMOS EL ROL
 $rol->__SET('id_rol', $dtRol->getIdRol($usuario[0]->__GET('usuario')));
+$rol->__SET('rol_descripcion', $dtRol->getRoldescripcion($usuario[0]->__GET('usuario')));
 
 
 //OBTENEMOS LAS OPCIONES DEL ROL

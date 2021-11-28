@@ -36,7 +36,7 @@ $usuario = $_SESSION['acceso']; // OBTENEMOS EL VALOR DE LA SESION
     <ul class="navbar-nav ml-auto">
       
     <li class="nav-item">
-    <p style="color:darkslateblue; font-style:italic; font-weight:bold;"><i class="fas fa-user"></i> <?php echo $usuario[0]->__GET('usuario');?></p>
+    <p style="color:darkslateblue; font-style:italic; font-weight:bold;"><i class="fas fa-user"></i> <?php echo $usuario[0]->__GET('usuario');?> (<?php echo $rol->__GET('rol_descripcion');?>)</p>
     </li>
     &nbsp;&nbsp;
       <li class="nav-item">

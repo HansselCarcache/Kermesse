@@ -142,4 +142,26 @@ class Dt_Rol extends Conexion
         }
     }
 
+    public function getRoldescripcion($user)
+    {
+        try{
+            $this->myCon = parent::conectar();
+            $result= array();
+            $querySQL = "SELECT * FROM dbkermesse.vw_usuario_rol WHERE usuario = :usuario;";
+
+            $stm = $this->myCon->prepare($querySQL);
+            $stm->bindParam(':usuario', $user, PDO::PARAM_STR, 40);
+            $stm->execute();
+
+            $result = $stm->fetchColumn(6);
+
+            $this->myCon = parent::desconectar();
+            return $result;
+        }
+        catch(Exception $e)
+        {
+            die($e->getMessage());
+        }
+    }
+
 }
