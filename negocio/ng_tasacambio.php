@@ -27,11 +27,11 @@ if($_POST)
                // $o->__SET('id_opcion', $_POST['']);
                //INGRESO DE TABLA TASA CAMBIO
              
-              $tabla = explode("/" , $_POST['detalle']);
+              /* $tabla = explode("/" , $_POST['detalle']);
               $string = implode("",$tabla);
-              $arraymulti = explode("," , $string);
+              $arraymulti = explode("," , $string); */
               
-             
+              $arraymulti = explode("," , $_POST['detalle']);
               
               $mitad = sizeof($arraymulti) / 2;
              
@@ -57,7 +57,7 @@ if($_POST)
                 endforeach;
                 $idforanea = end($ids);
                 //INGRESO DE TABLA TASA CAMBIO DETALLE
-                for($i=0;$i<=sizeof($arraymulti);$i++){
+                for($i=1;$i<=$mitad;$i++){
                     $fecha= array_shift($arraymulti);
                     $cambio = array_shift($arraymulti);
                     $tscdet->__SET('id_tasaCambio', $idforanea);

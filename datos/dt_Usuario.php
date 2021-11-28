@@ -136,4 +136,50 @@ class Dt_Usuario extends Conexion
             die($e->getMessage());
         } 
     }
+
+    public function obtenerUser($user){
+        try{
+            $this->myCon = parent::conectar();
+            $querySQL = "SELECT * FROM dbkermesse.tbl_usuario WHERE usuario = ?";
+            $stm = $this->myCon->prepare($querySQL);
+            $stm->execute(array($user));
+
+            $r = $stm->fetch(PDO::FETCH_OBJ);
+
+            $us = new Usuario();
+
+            $us->__SET('id_usuario', $r->id_usuario);
+            $us->__SET('usuario', $r->usuario);
+            $us->__SET('nombres', $r->nombres);
+            $us->__SET('apellidos', $r->apellidos);
+            $us->__SET('email', $r->email);
+            $us->__SET('estado', $r->estado);
+
+            $this->myCon = parent::desconectar();
+            return $us;
+
+        }catch(Exception $e)
+        {
+            die($e->getMessage());
+        }
+    }
+
+    public function validarUsuario($user, $pwd)
+    {
+        try{
+            $this->myCon = parent::conectar();
+            $querySQL = "SELECT * FROM dbkermesse.tbl_usuario WHERE usuario = ? AND pwd = ? AND estado<>3";
+            $stm = $this->myCon->prepare($querySQL);
+            $stm->execute(array($user, $pwd));
+
+            $resultado = $stm->fetchAll(PDO::FETCH_CLASS, "Usuario");
+
+            $this->myCon = parent::desconectar();
+            return $resultado;
+            }
+        catch(Exception $e)
+        {
+            die($e->getMessage());
+        }
+    }
 }

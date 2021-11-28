@@ -120,4 +120,32 @@ class Dt_Opciones extends Conexion
             die($e->getMessage());
         } 
     }
+
+    public function obtenerOpciones($rol)
+    {
+        try
+        {
+            $this->myCon = parent::conectar();
+            $result = array();
+            $querySQL = "SELECT opcion_descripcion FROM dbkermesse.vw_rol_opciones WHERE id_rol = :id_rol;";
+
+            $stm = $this->myCon->prepare($querySQL);
+            $stm->bindParam(':id_rol', $rol, PDO::PARAM_INT);
+            $stm->execute();
+
+            foreach($stm->fetchAll(PDO::FETCH_OBJ)as $r)
+            {
+                $opc = new Opciones();
+
+                $opc->__SET('opcion_descripcion', $r->opcion_descripcion);
+                $result[] = $opc;
+            }
+            $this->myCon = parent::desconectar();
+            return $result;
+        }
+        catch(Exception $e)
+        {
+
+        }
+    }
 }

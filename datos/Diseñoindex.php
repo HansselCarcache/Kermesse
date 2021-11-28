@@ -1,3 +1,18 @@
+<?php
+error_reporting(0);
+include '../../entidades/Seguridad/usuario.php';
+
+
+$usuario = new Usuario();
+//MANEJO Y CONTROL DE LA SESION
+session_start(); // INICIAMOS LA SESION
+//VALIDAMOS SI LA SESION ESTÁ VACÍA
+if (empty($_SESSION['acceso'])) { 
+  //nos envía al inicio
+  header("Location: ../../login.php?msj=2");
+}
+$usuario = $_SESSION['acceso']; // OBTENEMOS EL VALOR DE LA SESION
+?>
 <html>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -9,7 +24,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../sistema-kermesse.php" class="nav-link">Home</a>
+        <a href="../Kermesse/sistema-kermesse.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -25,7 +40,7 @@
     </li>
     &nbsp;&nbsp;
       <li class="nav-item">
-      <a href="../../login.php" title="Cerrar sesión"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+      <a href="../Kermesse/login.php" title="Cerrar sesión"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
         </a>
       </li>
     </ul>
@@ -35,8 +50,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../sistema-kermesse.php" class="brand-link">
-      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="../Kermesse/sistema-kermesse.php" class="brand-link">
+      <img src="../Kermesse/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Gestión Kermesse</span>
     </a>
 
@@ -45,7 +60,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../jeah.png" class="img-circle elevation-2" alt="User Image">
+          <img src="../Kermesse/jeah.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Grupo JEAH</a>
@@ -73,31 +88,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../pages/Seguridad/tbl_opciones.php" class="nav-link">
+                <a href="../Kermesse/pages/Seguridad/tbl_opciones.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Opciones</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../pages/Seguridad/tbl_vw_rol_opciones.php" class="nav-link">
+                <a href="../Kermesse/pages/Seguridad/tbl_vw_rol_opciones.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Opciones de Rol</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../pages/Seguridad/tbl_rol.php" class="nav-link">
+                <a href="../Kermesse/pages/Seguridad/tbl_rol.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Roles</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../pages/Seguridad/tbl_vw_usuario_rol.php" class="nav-link">
+                <a href="../Kermesse/pages/Seguridad/tbl_vw_usuario_rol.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Roles de Usuario</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../pages/Seguridad/tbl_usuario.php" class="nav-link">
+                <a href="../Kermesse/pages/Seguridad/tbl_usuario.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Usuarios</p>
                 </a>
@@ -115,13 +130,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                  <a href="../../pages/Kermesse/tbl_Kermesse.php" class="nav-link">
+                  <a href="../Kermesse/pages/Kermesse/tbl_Kermesse.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Kermesse</p>
                   </a>
                   </li>
                   <li class="nav-item">
-                  <a href="../../pages/Kermesse/tbl_parroquia.php" class="nav-link">
+                  <a href="../Kermesse/pages/Kermesse/tbl_parroquia.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Parroquia</p>
                   </a>
@@ -139,13 +154,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                  <a href="../../pages/Gastos/tbl_categoria_gastos.php" class="nav-link">
+                  <a href="../Kermesse/pages/Gastos/tbl_categoria_gastos.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Categoria de Gastos</p>
                   </a>
                   </li>
                   <li class="nav-item">
-                  <a href="../../pages/Gastos/tbl_gastos.php" class="nav-link">
+                  <a href="../Kermesse/pages/Gastos/tbl_gastos.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Gastos</p>
                   </a>
@@ -163,13 +178,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                  <a href="../../pages/Productos/tbl_categoria_producto.php" class="nav-link">
+                  <a href="../Kermesse/pages/Productos/tbl_categoria_producto.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Categoria Productos</p>
                   </a>
                   </li>
                   <li class="nav-item">
-                  <a href="../../pages/Productos/tbl_productos.php" class="nav-link">
+                  <a href="../Kermesse/pages/Productos/tbl_productos.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Productos</p>
                   </a>
@@ -187,7 +202,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                  <a href="../../pages/Comunidad/tbl_comunidad.php" class="nav-link">
+                  <a href="../Kermesse/pages/Comunidad/tbl_comunidad.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Comunidades</p>
                   </a>
@@ -261,7 +276,7 @@
                   </a>
                   </li>
                   <li class="nav-item">
-                  <a href="../../pages/ControlCaja/tbl_vw_tasacambio.php" class="nav-link">
+                  <a href="../Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tasa cambio</p>
                   </a>

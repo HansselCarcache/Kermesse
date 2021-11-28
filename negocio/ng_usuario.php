@@ -55,6 +55,41 @@ if($_POST)
             }
         break;
 
+        case '3':
+            try
+            {
+                $usuario = $_POST["user"];
+                $password = $_POST["pwd"];
+                if(empty($usuario) and empty($password)){
+                    header("Location: /Kermesse/login.php?msj=403");
+                }
+                else{
+                    $us = $dtus->validarUsuario($usuario, $password);
+                    if(empty($us)){
+                        header("Location: /Kermesse/login.php?msj=401");
+                    }
+                    else{
+                        //Iniciamos la sesion
+                        session_start();
+                        //Asignamos la sesion
+                        $_SESSION['acceso']=$us;
+                        //Si la variable de sesión esta correctamente definida
+                        if(!isset($_SESSION['acceso'])){
+                            //nos envia al inicio´
+                            header("Location /Kermesse/login.php?msj=400");
+                        }
+                        else{
+                            //nos envia al inicio
+                            header("Location: /Kermesse/sistema-kermesse.php?msj=1");
+                        }
+                    }
+                }
+            }
+            catch(Exception $e)
+            {
+
+            }
+
         default:
             #code...
             break;
