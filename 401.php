@@ -1,9 +1,14 @@
 <?php
 //error_reporting(0);
 include '../Kermesse/entidades/Seguridad/usuario.php';
+include '../Kermesse/entidades/Seguridad/rol.php';
+include '../Kermesse/datos/dt_Rol.php';
 
 
+$rol = new Rol();
 $usuario = new Usuario();
+
+$dtRol = new Dt_Rol;
 //MANEJO Y CONTROL DE LA SESION
 session_start(); // INICIAMOS LA SESION
 //VALIDAMOS SI LA SESION ESTÁ VACÍA
@@ -12,6 +17,9 @@ if (empty($_SESSION['acceso'])) {
   header("Location: ../login.php?msj=2");
 }
 $usuario = $_SESSION['acceso']; // OBTENEMOS EL VALOR DE LA SESION
+
+$rol->__SET('id_rol', $dtRol->getIdRol($usuario[0]->__GET('usuario')));
+$rol->__SET('rol_descripcion', $dtRol->getRoldescripcion($usuario[0]->__GET('usuario')));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +57,7 @@ $usuario = $_SESSION['acceso']; // OBTENEMOS EL VALOR DE LA SESION
     <ul class="navbar-nav ml-auto">
       
     <li class="nav-item">
-    <p style="color:darkslateblue; font-style:italic; font-weight:bold;"><i class="fas fa-user"></i> <?php echo $usuario[0]->__GET('usuario');?></p>
+    <p style="color:darkslateblue; font-style:italic; font-weight:bold;"><i class="fas fa-user"></i> <?php echo $usuario[0]->__GET('usuario');?> (<?php echo $rol->__GET('rol_descripcion');?>)</p>
     </li>
     &nbsp;&nbsp;
       <li class="nav-item">

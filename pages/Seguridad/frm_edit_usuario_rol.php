@@ -150,23 +150,12 @@ $Rolus = $dtRolus->getRolUsuario($varIdRolUs);
                     <input type="text" class="form-control" id="id_rol_usuario" name="id_rol_usuario" readonly required>
                     <input type="hidden" value="2" name="txtaccion" id="txtaccion">
                   </div>
-        
 
                   <div class="form-group">
-                    <label>Usuario</label>
-                    <select class="form-control" id="id_usuario" name="id_usuario"  required>
-                    <option value="">Seleccione...</option>
-                    <?php
-                        foreach($dtus->listUsuario() as $r):
-                    ?>
-                    <option value="<?php echo $r->__GET('id_usuario'); ?>"><?php echo $r->__GET('usuario'); ?></option>
-                    <?php
-                        endforeach;
-                    ?>
-                    </select>
-                  </div>  
-
-                  
+                    <label>Nombre de usuario</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" readonly required>
+                    
+                  </div>
 
                   <div class="form-group">
                     <label>Nombre Completo</label>
@@ -198,8 +187,8 @@ $Rolus = $dtRolus->getRolUsuario($varIdRolUs);
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Guardar</button>
-                  <button type="reset" class="btn btn-danger">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Modificar</button>
+                  <button type="button" onclick="setValores()" class="btn btn-danger">Cancelar</button>
                   </div>
               </form>
               </div>
@@ -254,11 +243,13 @@ $(function () {
   function setValores()
   {
     $("#id_rol_usuario").val("<?php echo $Rolus->__GET('id_rol_usuario') ?>")
-    $("#id_usuario").val("<?php echo $Rolus->__GET('id_usuario') ?>")
+    $("#usuario").val("<?php echo $Rolus->__GET('usuario') ?>")
     $("#nombre_completo").val("<?php echo $Rolus->__GET('nombre_completo') ?>")
     $("#email").val("<?php echo $Rolus->__GET('email') ?>")
     $("#id_rol").val("<?php echo $Rolus->__GET('id_rol') ?>")
   }
+
+  
 
   $(document).ready(function () 
   {

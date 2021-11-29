@@ -174,7 +174,7 @@ $User = $dtus->getUsuario($varIdUser);
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Guardar</button>
-                  <button type="reset" class="btn btn-danger">Cancelar</button>
+                  <button type="button" onclick="setValores()" class="btn btn-danger">Cancelar</button>
                   </div>
               </form>
               </div>

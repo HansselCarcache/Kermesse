@@ -36,6 +36,39 @@ class Dt_Usuario extends Conexion
             die($e->getMessage());
         }
     }
+
+    public function listUsuarioSinRol()
+    {
+        try
+        {
+            $this->myCon = parent::conectar();
+            $result = array();
+            $querySQL = "SELECT * FROM dbkermesse.tbl_usuario WHERE estado <>3 AND estado<>4;";
+
+            $stm = $this->myCon->prepare($querySQL);
+            $stm->execute();
+
+            foreach($stm->fetchAll(PDO::FETCH_OBJ) as $r)
+            {
+                $us = new Usuario();
+
+                $us->__SET('id_usuario', $r->id_usuario);
+                $us->__SET('usuario', $r->usuario);
+                $us->__SET('pwd', $r->pwd);
+                $us->__SET('nombres', $r->nombres);
+                $us->__SET('apellidos', $r->apellidos);
+                $us->__SET('email', $r->email);
+                $us->__SET('estado', $r->estado);
+                $result[] = $us;
+            }
+            $this->myCon = parent::desconectar();
+            return $result;
+        }
+        catch(Exception $e)
+        {
+            die($e->getMessage());
+        }
+    }
     public function regUsuario(Usuario $us)
     {
         try{

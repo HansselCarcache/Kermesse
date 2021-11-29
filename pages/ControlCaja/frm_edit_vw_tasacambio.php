@@ -230,7 +230,7 @@ $edit = $dtTsc->getTasaCambiodet($varIdTscdet);
 
                   <div class="card-footer">
                 <button type="submit"  class="btn btn-primary">Modificar encabezado</button>
-                  <button type="reset" class="btn btn-danger">Cancelar</button>
+                  <button type="button" onclick="setMaestro()" class="btn btn-danger">Cancelar</button>
                   </div>
                   
               </form>
@@ -267,7 +267,7 @@ $edit = $dtTsc->getTasaCambiodet($varIdTscdet);
                   <div class="card-footer">
                 <button type="submit"  onclick="modificar()" class="btn btn-primary">Modificar detalle</button>
                
-                  <button type="reset" class="btn btn-danger">Cancelar</button>
+                  <button type="button" onclick="setdetalles()" class="btn btn-danger">Cancelar</button>
                   </div>
                   </form>
                   <!-- <button type="button" class="btn btn-primary" onclick="test()">Ver</button>  -->
@@ -404,6 +404,22 @@ $.jAlert({
     $("#id_monedaC").val("<?php echo $Tasa->__GET('id_monedaC') ?>")
     $("#mes").val("<?php echo $Tasa->__GET('mes') ?>")
     $("#anio").val("<?php echo $Tasa->__GET('anio') ?>")
+    $("#id_tasaCambio_det").val("<?php echo $edit->__GET('id_tasaCambio_det') ?>")
+    $("#fecha").val("<?php echo $edit->__GET('fecha') ?>")
+    $("#tipoCambio").val("<?php echo $edit->__GET('tipoCambio') ?>")
+  }
+  function setMaestro()
+  {
+    $("#id_tasaCambio").val("<?php echo $Tasa->__GET('id_tasaCambio') ?>")
+    $("#id_maestro").val("<?php echo $Tasa->__GET('id_tasaCambio') ?>")
+    $("#id_monedaO").val("<?php echo $Tasa->__GET('id_monedaO') ?>")
+    $("#id_monedaC").val("<?php echo $Tasa->__GET('id_monedaC') ?>")
+    $("#mes").val("<?php echo $Tasa->__GET('mes') ?>")
+    $("#anio").val("<?php echo $Tasa->__GET('anio') ?>")
+  }
+  
+  function setdetalles()
+  {
     $("#id_tasaCambio_det").val("<?php echo $edit->__GET('id_tasaCambio_det') ?>")
     $("#fecha").val("<?php echo $edit->__GET('fecha') ?>")
     $("#tipoCambio").val("<?php echo $edit->__GET('tipoCambio') ?>")

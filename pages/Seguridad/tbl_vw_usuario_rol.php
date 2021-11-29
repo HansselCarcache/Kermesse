@@ -162,9 +162,11 @@ if(isset($varMsj))
 
                     <tr>
                         <td><?php echo $r->__GET('id_rol_usuario');?></td>
+                        
                         <td><?php echo $r->__GET('usuario');?></td>
                         <td><?php echo $r->__GET('nombre_completo');?></td>
                         <td><?php echo $r->__GET('email');?></td>
+                        
                         <td><?php echo $r->__GET('rol_descripcion');?></td>
                         <td>
                           <a href="frm_edit_usuario_rol.php?editRU=<?php echo $r->__GET('id_rol_usuario'); ?>">
@@ -175,7 +177,7 @@ if(isset($varMsj))
                             <i class="far fa-eye" title="Visualizar Opciones"></i>
                           </a> 
                           &nbsp;&nbsp;
-                          <a href="#" onclick="deleteRolUsuario(<?php echo $r->__GET('id_rol_usuario'); ?>);">
+                          <a href="#" onclick="deleteRolUsuario(<?php echo $r->__GET('id_rol_usuario'); ?>, <?php echo $r->__GET('id_usuario'); ?>);">
                             <i class="far fa-trash-alt" title="Eliminar Opciones"></i>
                           </a>
                           
@@ -249,14 +251,14 @@ if(isset($varMsj))
 <!-- Page specific script -->
 <script>
 
-function deleteRolUsuario(idO){
+function deleteRolUsuario(idO, idU){
 $.jAlert({
         'type': 'confirm',
         'confirmQuestion': '¿Esta seguro que desea eliminar el registro?',
         'onConfirm': function(e, btn){
           e.preventDefault();
           //do something here
-          window.location.href = "../../negocio/ng_usuario_rol.php?deleteUR="+idO;
+          window.location.href = "../../negocio/ng_usuario_rol.php?deleteUR="+idO+"&deleteU="+idU;
           btn.parents('.jAlert').closeAlert();
           return false;
         },

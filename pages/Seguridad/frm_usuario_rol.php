@@ -149,7 +149,7 @@ if(isset($varMsj))
                     <select class="form-control" id="id_usuario" name="id_usuario" required>
                     <option value="">Seleccione...</option>
                     <?php
-                        foreach($dtus->listUsuario() as $r):
+                        foreach($dtus->listUsuarioSinRol() as $r):
                     ?>
                     <option value="<?php echo $r->__GET('id_usuario'); ?>"><?php echo $r->__GET('usuario'); ?></option>
                     <?php

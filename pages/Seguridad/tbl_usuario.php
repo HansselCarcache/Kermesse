@@ -158,7 +158,7 @@ if(isset($varMsj))
                   <?php
                     foreach($dtUs->listUsuario() as $r):
                       $estado = "";
-                      if($r->__GET('estado')==1 || $r->__GET('estado')==2){
+                      if($r->__GET('estado')==1 || $r->__GET('estado')==2 || $r->__GET('estado')==4){
                         $estado = "Activo";
                       }else{
                         $estado = "Inactivo";
