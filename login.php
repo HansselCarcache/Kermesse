@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 
 session_start();
 session_unset(); //Borrar las variables de sesión
@@ -8,6 +8,12 @@ if(session_destroy()){
   //echo "La sesión ha sido cerrada correctamente";
 }else {
   //echo "Error al destruir la sesión";
+}
+//variable de control msj
+$varMsj = 0;
+if(isset($varMsj))
+{
+    $varMsj = $_GET['msj'];
 }
 
 ?>
@@ -25,6 +31,8 @@ if(session_destroy()){
   <link rel="stylesheet" href="../Kermesse/plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="../Kermesse/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Jalert -->
+  <link rel="stylesheet" href="../Kermesse/plugins/jAlert/dist/jAlert.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../Kermesse/dist/css/adminlte.min.css">
 </head>
@@ -84,7 +92,27 @@ if(session_destroy()){
 <script src="../Kermesse/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../Kermesse/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- JAlert js -->
+<script src="../Kermesse/plugins/jAlert/dist/jAlert.min.js"></script>
+<script src="../Kermesse/plugins/jAlert/dist/jAlert-functions.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../Kermesse/dist/js/adminlte.min.js"></script>
+<script>
+ $(document).ready(function () 
+  {
+    var mensaje = 0;
+    mensaje = "<?php echo $varMsj ?>";
+
+    
+      if(mensaje == "403")
+      {
+        errorAlert('Error', 'El nombre de usuario o la contraseña no pueden estar vacios!');
+      }
+      if(mensaje == "401")
+      {
+        errorAlert('Error', 'La contraseña o el nombre de usuario son incorrectos');
+      }
+  });
+</script>
 </body>
 </html>

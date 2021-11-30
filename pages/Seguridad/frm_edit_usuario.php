@@ -165,7 +165,7 @@ $User = $dtus->getUsuario($varIdUser);
                   </div>
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control" id="email" name="email"  maxlength="45" placeholder="Ingrese su correo electronico" title="Ingrese su correo electronico"  required>
+                    <input type="email" pattern=".+@[a-z0-9.-]+\.com" class="form-control" id="email" name="email"  maxlength="45" placeholder="Ingrese su correo electronico" title="Ingrese su correo electronico"  required>
                     
                   </div>
                   
