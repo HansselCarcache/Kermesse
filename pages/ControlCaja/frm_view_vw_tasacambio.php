@@ -231,7 +231,7 @@ $select = $dtTsc->listTasaCambiodet($varIdTsc);
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                <a href="../../pages/ControlCaja/tbl_vw_tasacambio.php"><i class="fas fa fa-undo-alt"></i> Regresar</a> 
+                <a href="../../pages/ControlCaja/tbl_tasacambio.php"><i class="fas fa fa-undo-alt"></i> Regresar</a> 
                   </div>
               </form>
               </div>

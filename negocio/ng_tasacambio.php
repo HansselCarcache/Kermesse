@@ -74,11 +74,11 @@ if($_POST)
                    
                 
                 
-                header("Location: /Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php?msj=1");
+                header("Location: /Kermesse/pages/ControlCaja/tbl_tasacambio.php?msj=1");
             }
             catch(Exception $e)
             {
-                header("Location: /Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php?msj=2");
+                header("Location: /Kermesse/pages/ControlCaja/tbl_tasacambio.php?msj=2");
                 die($e->getMessage());
             }
         break;
@@ -97,11 +97,11 @@ if($_POST)
                 
 
                 $dtvwTsc->editTasacambio($tsc);
-                header("Location: /Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php?msj=3");
+                header("Location: /Kermesse/pages/ControlCaja/tbl_tasacambio.php?msj=3");
             }
             catch(Exception $e)
             {
-                header("Location: /Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php?msj=5");
+                header("Location: /Kermesse/pages/ControlCaja/tbl_tasacambio.php?msj=5");
                 die($e->getMessage());
             }
         break;
@@ -119,11 +119,11 @@ if ($_GET)
         $tsc->__SET('id_tasaCambio', $_GET['deleteT']);
         $dtvwTsc->eliminarTasaCambiofull($tsc->__GET('id_tasaCambio'));
         $dtvwTsc->eliminarTasaCambio($tsc);
-        header("Location: /Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php?msj=7");
+        header("Location: /Kermesse/pages/ControlCaja/tbl_tasacambio.php?msj=7");
     }
     catch(Exception $e)
     {
-        header("Location: /Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php?msj=6");
+        header("Location: /Kermesse/pages/ControlCaja/tbl_tasacambio.php?msj=6");
         die($e->getMessage());
     }
 }

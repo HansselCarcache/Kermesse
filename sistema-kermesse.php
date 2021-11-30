@@ -107,6 +107,44 @@ if(!$acceso)
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <style>
+    
+.carta {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 20%;
+  border-radius: 7%;
+  background-color:plum;
+  opacity: 92%;
+  height: 40%;
+}
+
+
+
+.carta:hover {
+  box-shadow:  8px 16px 0 rgba(0,0,0,0.2);
+  width:25%;
+}
+
+
+.imagen{
+  height: 90%;
+  width: 100%;
+  opacity: 85%;
+}
+.container {
+  padding: 5px 16px;
+  
+}
+.bold{
+  color:slateblue;
+  font-family:monospace;
+}
+.parrafo{
+  color:royalblue;
+  font-family:monospace;
+}
+    </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -116,24 +154,46 @@ if(!$acceso)
           <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
             <!-- Content Header (Page header) -->
+            <section class="content-header">
             <div class="content-header">
               <div class="container-fluid">
                 <div class="row mb-2">
                   <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="bold">Sistema Kermesse</h1>
                   </div><!-- /.col -->
                   <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                       <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                       <li class="breadcrumb-item active">Kermesse</li>
                     </ol>
+                    
+                </div>
+
                   </div><!-- /.col -->
                 </div><!-- /.row -->
               </div><!-- /.container-fluid -->
+              </section>
+
+              <!-- Main content -->
+    <section class="content">
+      <div class="error-page">
+      <div class="container" >
+            
+            <h2><b class="bold">Bienvenido al sistema de gestión de kermesse <?php echo $usuario[0]->__GET('usuario');?> </b></h2> 
+            
             </div>
-            <!-- /.content-header -->
-        </div>
+        <!-- /.error-content -->
+      </div>
+      <!-- /.error-page -->
+    </section>
+
+              
+          
+            
+          
   </div><!-- /.container-fluid -->
+</div>
+</div>
    
    
   <!-- /.content-wrapper -->

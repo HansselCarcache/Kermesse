@@ -229,7 +229,8 @@ if(isset($varMsj))
                   </div>
                   <div>
                   <input type="hidden"  name="detalle" id="detalle">
-                  <button type="button" class="btn btn-primary" onclick="validar()">Registrar nuevo</button>
+                  <button type="button" class="btn btn-primary" onclick="verificarFecha()">Registrar nuevo</button>
+                  <!-- <button type="button" class="btn btn-primary" onclick="verificarFecha()">Verificar Fecha</button> -->
                   <!-- <button type="button" class="btn btn-primary" onclick="test()">Ver</button>  -->
                 </div>
                 <br>
@@ -365,6 +366,41 @@ return false;
 </script>
 
 <script >
+function agregarFecha(){
+  
+  let fechaArray =[];
+    var rows = document.getElementById('tabla').getElementsByTagName('tr');
+    for (i = 1; i < rows.length-1; i++) {
+    var fecha = document.getElementById('tabla').getElementsByTagName('tr')[i].getElementsByTagName('td')[0].innerHTML;
+    fechaArray.push(fecha);  
+  }
+  
+  return fechaArray;
+}
+
+function verificarFecha(){
+  agregarFecha();
+  let coincidencias = [];
+  fechaArray = agregarFecha();
+  var fec =  $('#fecha').val();
+  for (j=0; j<=fechaArray.length; j++){
+    
+    if(fec === fechaArray[j]){
+        errorAlert("No pueden existir tasas de cambio con fechas iguales");
+        coincidencias.push(fechaArray[j]);
+        
+      }else{
+        //alert("no existe");
+        //validar();
+        
+      }
+    }
+    if(coincidencias.length ===0){
+      validar();
+      
+    }
+}
+
 function verid() {
     //if (!document.getElementsByTagName || !document.createTextNode) return;
     

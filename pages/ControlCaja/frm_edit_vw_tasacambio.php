@@ -240,7 +240,7 @@ $edit = $dtTsc->getTasaCambiodet($varIdTscdet);
                   <div class="card-header">
                 <h3 class="card-title">Modificar tasa de cambio detalle</h3>
               </div>
-                  <form method="POST" action="../../negocio/ng_tasacambiodet.php">
+                  <form id="form2" name="form2" method="POST" action="../../negocio/ng_tasacambiodet.php" onsubmit="return toSubmit(event)">
                   <div class="card-body">
                   <h2>Detalle Tasa Cambio</h2>
                   <div>
@@ -260,12 +260,12 @@ $edit = $dtTsc->getTasaCambiodet($varIdTscdet);
                     <label>Tipo de Cambio</label>
                     <input type="text" class="form-control col-sm-3" id="tipoCambio" name="tipoCambio" placeholder="Ingrese el tipo de cambio" title="Ingrese el tipo de cambio" required>
 
-                    <button type="submit" class="btn btn-primary col-sm-3" style="text-align:center;" onclick="insertar()" >Registrar detalle nuevo</button>
+                    <button type="submit" class="btn btn-primary col-sm-3" style="text-align:center;" onclick="verificarFechaI()" >Registrar detalle nuevo</button>
                                 
                   </div>
                   <br>
                   <div class="card-footer">
-                <button type="submit"  onclick="modificar()" class="btn btn-primary">Modificar detalle</button>
+                <button type="submit"  onclick="verificarFechaM()" class="btn btn-primary">Modificar detalle</button>
                
                   <button type="button" onclick="setdetalles()" class="btn btn-danger">Cancelar</button>
                   </div>
@@ -456,18 +456,22 @@ $.jAlert({
 </script>
 
 <script>
-  function EditarDet(id)
-  {
-    
-    window.location.href = window.location.href + "?w1=" + id
-    alert(id) 
-    alert(<?php echo $id ?>)
-    
-    //$("#id_tasaCambio_det").val("<?php echo $edit->__GET('id_tasaCambio_det') ?>");
-    
-
-    
+  function toSubmit(e){
+    e.preventDefault(); 
+  try {
+   someBug();
+  } catch (e) {
+   throw new Error(e.message);
   }
+  return false;
+   }
+   
+   function submitForm(){
+    var form = document.getElementById("form2");
+form.onsubmit = function() {
+  return true;
+}
+   }
 
 </script>
 
@@ -475,16 +479,104 @@ $.jAlert({
   function insertar(){
     //alert(document.getElementById("txtaccion2").value);
     document.getElementById("txtaccion2").value = "1";
+    submitForm();
+    /* var form = document.getElementById("detalle");
+    form.onsubmit = function() {
+    return true;
    // alert(document.getElementById("txtaccion2").value);
-  }
+  } */
+}
 
   function modificar(){
    // alert(document.getElementById("txtaccion2").value);
     document.getElementById("txtaccion2").value = "2";
+    submitForm();
   //  alert(document.getElementById("txtaccion2").value);
   }
   
 </script> 
+
+<script>
+  function validar(){
+    var campo1 = $('#tipoCambio').val();
+    var campo2 = $('#fecha').val();
+    if(campo1 === ''|| campo2 === ''){
+    errorAlert("La fecha y el tipo de cambio no pueden estar vacios");
+    return false;
+    }
+    else
+    {
+    //Las validaciones que necesitas hacer
+    //agregarFila();
+    }
+  } 
+
+  function agregarFecha(){
+  
+  let fechaArray =[];
+    var rows = document.getElementById('tabla').getElementsByTagName('tr');
+    for (i = 1; i < rows.length-1; i++) {
+    var fecha = document.getElementById('tabla').getElementsByTagName('tr')[i].getElementsByTagName('td')[1].innerHTML;
+    fechaArray.push(fecha);  
+  }
+  
+  return fechaArray;
+  }
+
+  function verificarFechaI(){
+  agregarFecha();
+  let coincidencias = [];
+  fechaArray = agregarFecha();
+  var fec =  $('#fecha').val();
+  for (j=0; j<=fechaArray.length; j++){
+    
+    if(fec === fechaArray[j]){
+        errorAlert("No pueden existir tasas de cambio con fechas iguales, elija una fecha diferente por favor");
+        coincidencias.push(fechaArray[j]);
+        break;
+      }else{
+        //alert("no existe");
+        //validar();
+        
+      }
+    }
+    if(coincidencias.length ===0){
+      validar();
+      insertar();
+      
+    }else{
+      //insertar();
+    }
+    
+  }
+
+  function verificarFechaM(){
+  agregarFecha();
+  let coincidencias = [];
+  fechaArray = agregarFecha();
+  var fec =  $('#fecha').val();
+  for (j=0; j<=fechaArray.length; j++){
+    
+    if(fec === fechaArray[j]){
+        errorAlert("No pueden existir tasas de cambio con fechas iguales, elija una fecha diferente por favor");
+        coincidencias.push(fechaArray[j]);
+        break;
+      }else{
+        //alert("no existe");
+        //validar();
+        
+      }
+    }
+    if(coincidencias.length ===0){
+      validar();
+      modificar();
+      
+    }else{
+      //insertar();
+    }
+    
+  }
+</script>  
 
 <script>
 function agregarFila(){

@@ -299,7 +299,7 @@ if(session_destroy()){
                   </a>
                   </li>
                   <li class="nav-item">
-                  <a href="../Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php" class="nav-link">
+                  <a href="../Kermesse/pages/ControlCaja/tbl_tasacambio.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tasa cambio</p>
                   </a>

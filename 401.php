@@ -307,7 +307,7 @@ $rol->__SET('rol_descripcion', $dtRol->getRoldescripcion($usuario[0]->__GET('usu
                   </a>
                   </li>
                   <li class="nav-item">
-                  <a href="../Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php" class="nav-link">
+                  <a href="../Kermesse/pages/ControlCaja/tbl_tasacambio.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tasa cambio</p>
                   </a>
@@ -600,7 +600,7 @@ $rol->__SET('rol_descripcion', $dtRol->getRoldescripcion($usuario[0]->__GET('usu
 
           <p>
             Consulte con el administrador del sistema para que le proporcione los accesos solicitados. Por ahora debe retornar
-           al <a href="../Kermesse/index.html">Inicio</a>.
+           al <a href="../Kermesse/sistema-kermesse.php">Inicio</a>.
           </p>
 
           
