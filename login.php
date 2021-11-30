@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 
 session_start();
 session_unset(); //Borrar las variables de sesión

@@ -97,7 +97,7 @@ if ($_GET)
         echo $empty;
        if($empty==1){
             $dtvwTsc->eliminarTasaCambio($tsc);
-            header("Location: /Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php?msj=7");
+            header("Location: /Kermesse/pages/ControlCaja/tbl_tasacambio.php?msj=7");
         }else{
             header("Location: /Kermesse/pages/ControlCaja/frm_edit_vw_tasacambio.php?editT=$id_Maestro&editTD=$idDetalle&msj=5#redirect");  
         }
@@ -107,7 +107,7 @@ if ($_GET)
     }
     catch(Exception $e)
     {
-        header("Location: /Kermesse/pages/ControlCaja/tbl_vw_tasacambio.php?msj=6");
+        header("Location: /Kermesse/pages/ControlCaja/tbl_tasacambio.php?msj=6");
         die($e->getMessage());
     }
 }
