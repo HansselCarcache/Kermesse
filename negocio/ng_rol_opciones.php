@@ -132,7 +132,7 @@ if($_POST)
     }
 }
 
-/* if ($_GET)
+ if ($_GET)
 {
     try
     {
@@ -146,4 +146,4 @@ if($_POST)
         header("Location: /Kermesse/pages/Seguridad/tbl_vw_rol_opciones.php?msj=6");
         die($e->getMessage());
     }
-} */
+} 

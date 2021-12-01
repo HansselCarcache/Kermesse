@@ -153,6 +153,7 @@ $Rolus = $dtRolus->getRolUsuario($varIdRolUs);
 
                   <div class="form-group">
                     <label>Nombre de usuario</label>
+                    <input type="hidden" name="id_usuario" id="id_usuario">
                     <input type="text" class="form-control" id="usuario" name="usuario" readonly required>
                     
                   </div>
@@ -243,6 +244,7 @@ $(function () {
   function setValores()
   {
     $("#id_rol_usuario").val("<?php echo $Rolus->__GET('id_rol_usuario') ?>")
+    $("#id_usuario").val("<?php echo $Rolus->__GET('id_usuario') ?>")
     $("#usuario").val("<?php echo $Rolus->__GET('usuario') ?>")
     $("#nombre_completo").val("<?php echo $Rolus->__GET('nombre_completo') ?>")
     $("#email").val("<?php echo $Rolus->__GET('email') ?>")
